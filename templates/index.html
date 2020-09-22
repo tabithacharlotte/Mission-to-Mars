@@ -13,17 +13,17 @@
   <body>
     <div class="container">
       <!-- Add Jumbotron to Header -->
-      <div class="jumbotron text-center">
-        <h1>Mission to Mars</h1>
+      <div class="jumbotron text-center" style="background-image: url(https://cdn.theatlantic.com/static/mt/assets/science/0831Pic.jpg); background-size: 100%; height: 100%;">
+        <h1 style="color:white">Mission to Mars</h1>
         <!-- Add a button to activate scraping script -->
         <p><a class="btn btn-danger btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
 
       <!-- Add section for Mars News -->
       <div class="row" id="mars-news">
-        <div class=".col-xs-12 .col-md-12">
+        <div class="col-md-12">
           <div class="media">
-            <div class="media-body bg-info">
+            <div class="media-body">
               <h2>Latest Mars News</h2>
               <h4 class="media-heading">{{ mars.news_title }}</h4>
               <p>{{ mars.news_paragraph }}</p>
@@ -34,7 +34,7 @@
 
       <!-- Section for Featured Image and Facts table -->
       <div class="row" id="mars-featured-image">
-        <div class=".col-xs-8 .col-md-8">
+        <div class="col-md-8">
           <h2>Featured Mars Image</h2>
 
           <!-- if images is False/None/non-existent, then default to error message -->
@@ -45,7 +45,7 @@
           />
         </div>
 
-        <div class=".col-xs-4 .col-md-4">
+        <div class="col-md-4">
           <!-- Mars Facts -->
           <div class="row" id="mars-facts">
             <h4>Mars Facts</h4>
@@ -61,7 +61,7 @@
         </div>
 
         {% for hemispheres in mars.URL_title %}
-        <div class=".col-xs-6 .col-md-6">
+        <div class="col-md-6">
           <div class="thumbnail">
             <img src="{{hemispheres.img_url | default('static/images/error.png', true)}}" alt="...">
             <div class="caption">
@@ -70,6 +70,10 @@
           </div>
         </div>
         {% endfor %}
+      </div>
+      <!--Section for last modified-->
+      <div class="row" id="last-modified">
+        <div class='col-md-12'><span> Last Modified: </span><span>{{mars.last_modified | formatdatetime}}</span></div>
       </div>
     </div>
   </body>
